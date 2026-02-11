@@ -81,15 +81,19 @@ const [isAddOpen, setIsAddOpen] = useState(false);
   };
 
   const handleUpdateMovie = async (id, updatedMovie) => {
-    try {
-      await axios.put(`${API_URL}/${id}`, updatedMovie);
-      fetchMovies();
-      setIsEditModalOpen(false);
-      setEditingMovie(null);
-    } catch (error) {
-      console.error("Error updating movie", error);
-    }
-  };
+  try {
+    await axios.put(`${API_URL}/${id}`, updatedMovie);
+
+    await fetchMovies();
+
+    // IMPORTANT: Change route after save
+    navigate("/");
+
+  } catch (error) {
+    console.error("Error updating movie", error);
+  }
+};
+
 
   const handleEditClick = (movie) => {
     setEditingMovie(movie);
