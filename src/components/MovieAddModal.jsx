@@ -25,8 +25,6 @@ const MovieAddModal = ({ isOpen, onClose, onAdd }) => {
         }
 
         onAdd(formData);
-
-        // Reset form
         setFormData({
             name: "",
             genre: "",
@@ -40,7 +38,7 @@ const MovieAddModal = ({ isOpen, onClose, onAdd }) => {
 
     if (!isOpen) return null;
 
-    return createPortal (
+    return createPortal(
         <div className="modal-backdrop" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
@@ -121,7 +119,7 @@ const MovieAddModal = ({ isOpen, onClose, onAdd }) => {
                 </form>
             </div>
         </div>
-        ,document.body
+        , document.body
     );
 };
 

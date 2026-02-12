@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const SearchBar = ({ searchQuery, onSearchChange }) => {
     return (
         <div className="search-bar">

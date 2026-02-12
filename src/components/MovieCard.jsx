@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate , useLocation } from "react-router-dom";
 
 const MovieCard = ({ movie, onDelete }) => {
   const navigate = useNavigate(); 
+  // const location = useLocation();
 
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -14,13 +15,19 @@ const MovieCard = ({ movie, onDelete }) => {
   const imageUrl =
     imageError || !movie.imageUrl ? placeholderImage : movie.imageUrl;
 
+
+
   return (
-    <div
-      className="movie-card"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <div className="movie-card"
+      onClick={() => navigate(`/movies/${movie._id}`)}
+      style={{ cursor: 'pointer' }}
     >
-      <div className="movie-image-container">
+      <div
+        className="movie-image-container"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ position: 'relative' }}
+      >
         <img
           src={imageUrl}
           alt={movie.name}
